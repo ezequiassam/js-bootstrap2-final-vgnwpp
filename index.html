@@ -1,0 +1,250 @@
+<div id="app">
+  <div id="tabela_de_aulas">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">Tabelas de Aulas</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <a class="nav-link active" href="#">Tabela<span class="sr-only">(current)</span></a>
+        </div>
+      </div>
+      <div class="d-flex">
+        <button class="btn btn-sm btn-outline-secondary" type="button" onclick="cadastroaula()">Cadastrar Aulas</button>
+      </div>
+    </nav>
+
+    <table class="table container">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Professor</th>
+          <th scope="col">Disciplina</th>
+          <th scope="col">Alunos</th>
+        </tr>
+      </thead>
+      <tbody id="tabelaDeAulas">
+
+      </tbody>
+    </table>
+  </div>
+
+  <div id="cadastro_de_aulas" style="display: none;">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">Cadastro de Alunos</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <a class="nav-link active" href="#" onclick="retornarTabela()">Tabela de Aulas
+            <span class="sr-only">(current)</span></a>
+        </div>
+      </div>
+      <form class="d-flex">
+        <button class="btn btn-sm btn-outline-secondary" type="button" onclick="cadastroDeAulas()">Cadastrar Aulas</button>
+      </form>
+    </nav>
+
+    <div class="card-body container">
+      <div class="form-group row mt-3">
+        <label class="col-md-1 col-form-label text-md-right">Disciplina: </label>
+        <div class="col-md-8">
+          <select class="form-select" aria-label="Default select example" id="disciplina">
+          <option selected>Selecione...</option>
+          </select>
+        </div>
+        <div class="col-md-3">
+          <button id="cdt_disciplina" onclick="cadastrarDiscipli()" class="btn btn-sm btn-outline-secondary" type="button">
+            Cadastrar Disciplina </button>
+        </div>
+      </div>
+      <div class="form-group row mt-3">
+        <label class="col-md-1 col-form-label text-md-right">Professor: </label>
+        <div class="col-md-8">
+          <select class="form-select" aria-label="Default select example" id="professor">
+              <option selected>Selecione...</option>
+              </select>
+        </div>
+        <div class="col-md-3">
+          <button id="cdt_professor" onclick="cadastrodeprofessores()" class="btn btn-sm btn-outline-secondary" type="button">
+                    Cadastrar Professor
+        </button>
+        </div>
+      </div>
+      <div class="form-group row mt-3">
+        <div class="row">
+          <div class="col-md-9">
+            <label class="col-form-label text-md-right" style="margin-left: 2px">Alunos: </label>
+          </div>
+          <div class="col-md-2">
+            <button id="cdt_aluno" onclick="adicionarAluno()" class="btn btn-sm btn-outline-secondary" type="button">
+                      Adicionar Alunos
+          </button>
+          </div>
+        </div>
+        <div class="alunos" id="alunosTabela">
+          <div class="row">
+            <div class="col-md-1">
+              <label>Id:</label>
+              <input type="number" class="form-control" placeholder="Id" name="idAluno0" id="idAluno0" value="1">
+            </div>
+            <div class="col-md-2">
+              <label>Nome: </label>
+              <input type="text" class="form-control is-valid" placeholder="Nome Completo" name="nameAluno0" id="nameAluno0">
+            </div>
+            <div class="col-md-2">
+              <label>CPF:</label>
+              <input type="number" class="form-control is-valid" placeholder="CPF" name="cpfAluno0" id="cpfAluno0">
+            </div>
+            <div class="col-md-2">
+              <label> Endereço: </label>
+              <input type="text" class="form-control is-valid" placeholder="Endereço" name="enderecoAluno0" id="enderecoAluno0">
+            </div>
+            <div class="col-md-2">
+              <label> Telefone: </label>
+              <input type="number" class="form-control" placeholder="Telefone" name="telefoneAluno0" id="telefoneAluno0">
+            </div>
+            <div class="col-md-2">
+              <label> Email: </label>
+              <input type="email" class="form-control" placeholder="email" name="emailAluno0" id="emailAluno0">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-1">
+              <label>Id:</label>
+              <input type="number" class="form-control" placeholder="Id" name="idAluno1" id="idAluno1" value="2">
+            </div>
+            <div class="col-md-2">
+              <label>Nome: </label>
+              <input type="text" class="form-control" placeholder="Nome Completo" name="nameAluno1" id="nameAluno1">
+            </div>
+            <div class="col-md-2">
+              <label>CPF:</label>
+              <input type="number" class="form-control" placeholder="CPF" name="cpfAluno1" id="cpfAluno1">
+            </div>
+            <div class="col-md-2">
+              <label> Endereço: </label>
+              <input type="text" class="form-control" placeholder="Endereço" name="enderecoAluno1" id="enderecoAluno1">
+            </div>
+            <div class="col-md-2">
+              <label> Telefone: </label>
+              <input type="number" class="form-control" placeholder="Telefone" name="telefoneAluno1" id="telefoneAluno1">
+            </div>
+            <div class="col-md-2">
+              <label> Email: </label>
+              <input type="email" class="form-control" placeholder="email" name="emailAluno1" id="emailAluno1">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="cadastro_de_disciplina" style="display: none;">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">Cadastro de Disciplina</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <a class="nav-link active" href="#" onclick="retornarCadastroAula()">Cadastrar
+            Aulas<span class="sr-only">(current)</span></a>
+        </div>
+      </div>
+      <form class="d-flex">
+        <button class="btn btn-sm btn-outline-secondary" type="button" onclick="ativarDisciplinaCadastrada()">Cadsatrar Aulas</button>
+      </form>
+    </nav>
+
+    <div class="card-body container">
+      <div class="form-group row mt-3">
+        <label class="col-md-1 col-form-label text-md-right">Nome: </label>
+        <div class="col-md-5">
+          <input type="text" class="form-control" placeholder="Nome" name="nomeDisci" id="nomeDisci" required>
+        </div>
+        <label class="col-md-1 col-form-label text-md-right">Descrição: </label>
+        <div class="col-md-5">
+          <input type="text" class="form-control" placeholder="Descrição" name="nomeDescri" id="nomeDescri">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="cadastro_de_professores" style="display: none;">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Cadastro de Professores</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-link active" href="#" onclick="retornarCadastroAula()">Cadastrar
+          Aulas<span class="sr-only">(current)</span></a>
+      </div>
+    </div>
+    <form class="d-flex">
+      <button class="btn btn-sm btn-outline-secondary" type="button" onclick="ativarProfessorCadastrado()">Cadsatrar Aulas</button>
+    </form>
+  </nav>
+
+  <div class="card-body container needs-validation">
+    <div class="form-group row mt-3">
+      <label class="col-md-1 col-form-label text-md-right">Nome: </label>
+      <div class="col-md-5">
+        <input type="text" class="form-control is-valid" placeholder="Nome" name="nomeProf" id="nomeProf" required>
+      </div>
+      <label class="col-md-1 col-form-label text-md-right">CPF: </label>
+      <div class="col-md-3">
+        <input type="number" class="form-control is-valid" placeholder="CPF" name="cpfProf" id="cpfProf" required>
+      </div>
+    </div>
+    <div class="form-group row mt-3">
+      <label class="col-md-1 col-form-label text-md-right">Email: </label>
+      <div class="col-md-5">
+        <input type="email" class="form-control is-valid" placeholder="Email" name="emailProf" id="emailProf" required>
+      </div>
+      <label class="col-md-1 col-form-label text-md-right">Telefone: </label>
+      <div class="col-md-3">
+        <input type="text" class="form-control is-valid" placeholder="Telefone" name="telefoneProf" id="telefoneProf" >
+      </div>
+    </div>
+    <div class="form-group row mt-3">
+      <label class="col-md-1 col-form-label text-md-right">Endereço: </label>
+      <div class="col-md-7">
+        <input type="text" class="form-control" placeholder="Endereço" name="enderecoProf" id="enderecoProf">
+      </div>
+    </div>
+    <div class="form-group row mt-3">
+      <label class="col-md-0 col-form-label text-md-right">Especialização: </label>
+      <div class="col-md-7">
+        <input type="text" class="form-control is-valid" placeholder="Especialização" name="EspecializacaoProf" id="EspecializacaoProf">
+      </div>
+    </div>
+  </div>
+  <script>
+    // Exemplo de JavaScript inicial para desativar envios de formulário, se houver campos inválidos.
+(function() {
+  'use strict';
+  window.addEventListener('load', function() {
+    // Pega todos os formulários que nós queremos aplicar estilos de validação Bootstrap personalizados.
+    var forms = document.getElementsByClassName('needs-validation');
+    // Faz um loop neles e evita o envio
+    var validation = Array.prototype.filter.call(forms, function(form) {
+      form.addEventListener('submit', function(event) {
+        if (form.checkValidity() === false) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+        form.classList.add('was-validated');
+      }, false);
+    });
+  }, false);
+})();
+  </script>
+</div>
+</div>
+</div>
